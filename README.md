@@ -17,3 +17,5 @@
 	• Added a column region_name in Locations table using ALTER query.
 	• Added a column ID to the table Locations.
 	• Added a column state_province to the table Locations.
+
+
