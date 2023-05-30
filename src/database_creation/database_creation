@@ -1,0 +1,38 @@
+--creating a database with query
+CREATE DATABASE school
+
+--To change the database to work USE query
+USE school
+
+--Creating the table as Locations
+CREATE TABLE Locations
+(country_id INT,
+country_name VARCHAR(20),
+region_id VARCHAR(10))
+
+--Selecting the table to display
+SELECT * FROM Locations
+
+--Renaming the table existing
+exec sp_rename Locations,Locations_new
+
+--Again renaming the table existing
+exec sp_rename Locations_new,Locations
+
+--Selecting the table to display
+SELECT * FROM Locations
+
+--Adding a column using ALTER query
+ALTER TABLE Locations ADD region_name VARCHAR(20)
+SELECT * FROM Locations
+ALTER TABLE Locations ADD ID INT
+
+--Selecting table to displayu altered table
+SELECT * FROM Locations
+
+--Adding a column using ALTER query
+ALTER TABLE Locations ADD state_province VARCHAR(10)
+SELECT * FROM Locations
+
+--Selecting table to displayu altered table
+SELECT * FROM Locations
