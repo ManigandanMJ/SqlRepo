@@ -5,12 +5,12 @@
 
 	Question-1
 	
-•	Connected with SQL server database engine using SSMS.
-•	Created database as school using query and Student database without using query.
-•	Created a backup file of database and dropped the database using Drop query.
-•	Backup file was restored from SQL server.
-•	AdventureWork2019 Db was restored from web source.
-•	Applied filters for Sales table.
+	•Connected with SQL server database engine using SSMS.
+	•Created database as school using query and Student database without using query.
+	•Created a backup file of database and dropped the database using Drop query.
+	•Backup file was restored from SQL server.
+	•AdventureWork2019 Db was restored from web source.
+	•Applied filters for Sales table.
 
  	 Question-2
 	 
