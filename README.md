@@ -4,6 +4,7 @@
 **Q1 (Creating Database and Tables) :**
 
 	Question-1
+	
 •	Connected with SQL server database engine using SSMS.
 •	Created database as school using query and Student database without using query.
 •	Created a backup file of database and dropped the database using Drop query.
@@ -12,6 +13,7 @@
 •	Applied filters for Sales table.
 
  	 Question-2
+	 
 •	Created table Locations with country_id,country_name and region_id columns.
 •	Renames the table name as Locations_new from Locations.
 •	Added a column region_name in Locations table using ALTER query.
