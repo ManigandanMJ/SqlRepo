@@ -27,7 +27,7 @@ ALTER TABLE Locations ADD region_name VARCHAR(20)
 SELECT * FROM Locations
 ALTER TABLE Locations ADD ID INT
 
---Selecting table to displayu altered table
+--Selecting table to display altered table
 SELECT * FROM Locations
 
 --Adding a column using ALTER query
