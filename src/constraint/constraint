@@ -1,0 +1,139 @@
+
+--Creating table as job_details with Not null constraint
+CREATE TABLE job_details
+(agent_code char(6) NOT NULL,
+agent_name char(25) NOT NULL,
+working_area char(25) NOT NULL)
+
+--Inserting values to the table job_details
+INSERT INTO job_details VALUES('A1001','Abhi','brisban')
+INSERT INTO job_details VALUES('A1002','Kiran','brisban')
+INSERT INTO job_details VALUES('A1003','gunal','bangalore')
+INSERT INTO job_details VALUES('A1004','akil','chennai')
+
+--Displaying the table
+SELECT * FROM job_details
+
+--Creating table order_details with Unique constraint
+CREATE TABLE order_deatils
+(ord_num DECIMAL(6) NOT NULL,
+ord_amount DECIMAL(12,2) NULL,
+ord_date DATE NOT NULL,
+cust_code CHAR(6),
+agent_code CHAR(6),
+UNIQUE (ord_num))
+
+--Inserting values to order_details table
+INSERT INTO order_deatils VALUES(1234,10000.25,'1940-10-03','c001','A1001')
+INSERT INTO order_deatils VALUES(1235,10000.50,'1945-11-02','c002','A1002')
+INSERT INTO order_deatils VALUES(5565,20000.50,'2000-11-07','c003','A1003')
+INSERT INTO order_deatils VALUES(1233,10000.50,'2021-12-09','c004','A1004')
+
+--Displaying the table
+SELECT * FROM order_deatils
+
+--Creating table job_deatils2 with 2 Unique constraint
+CREATE TABLE job_det2
+(agent_code char(6) NOT NULL,
+agent_name CHAR(25) NOT NULL,
+working_area CHAR(25) NOT NULL,
+commission DECIMAL(5,2)NULL,
+UNIQUE (agent_code), UNIQUE (agent_name))
+
+--Inserting values to job_det2 table
+INSERT INTO job_det2 VALUES('A1001','Abhi','brisban',0.2)
+INSERT INTO job_det2 VALUES('A1002','Kiran','brisban',1.0)
+INSERT INTO job_det2 VALUES('A1003','gunal','bangalore',0.5)
+INSERT INTO job_det2 VALUES('A1004','akil','chennai',0.4)
+
+--Displaying the table
+SELECT * FROM job_det2
+
+--Creating table customer_deatils with Unique constraint
+CREATE TABLE customer_details
+(cust_code CHAR(6) NOT NULL,
+cust_name  CHAR(25) NOT NULL,
+cust_city CHAR(25) NOT NULL,
+grade INT NULL,
+agent_code CHAR(6) NOT NULL,
+UNIQUE (cust_code),
+UNIQUE (agent_code))
+
+--Inserting values to table customer_details
+INSERT INTO customer_details VALUES('C01','MANI','BANGALORE',1,'A1001')
+INSERT INTO customer_details VALUES('C02','GEETHA','CHENNAI',2,'A1002')
+INSERT INTO customer_details VALUES('C03','BALU','BANGALORE',1,'A1004')
+INSERT INTO customer_details VALUES('C04','ANISH','LONDON',3,'A1003')
+
+--Displaying the table
+SELECT * FROM customer_details
+
+--Creating table agent_com with Unique, Check constraints
+CREATE TABLE agent_com
+(agent_code CHAR(6),
+agent_name  CHAR(25),
+working_area CHAR(25),
+commission INT,
+UNIQUE (agent_code ),
+UNIQUE (agent_name ),
+CHECK (commission<1))
+
+--Inserting values to agent_com
+INSERT INTO agent_com VALUES('A1001','Abhi','brisban',0.2)
+INSERT INTO agent_com VALUES('A1002','Kiran','brisban',0.0)
+INSERT INTO agent_com VALUES('A1003','gunal','bangalore',0.5)
+INSERT INTO agent_com VALUES('A1004','akil','chennai',0.4)
+
+--Displaying table agent_com
+SELECT * FROM agent_com
+
+--Altering the commission condition using Alter
+ALTER TABLE agent_com ADD CHECK (commission<2)
+
+--Altering the commission condition using Alter
+ALTER TABLE agent_com ADD CHECK (commission<1)
+
+--Displaying table agent_com
+SELECT * FROM agent_com
+
+--Selecting the agent details of working_area in London,brisban,or mumbai
+SELECT * FROM agent_com WHERE working_area
+IN ('London','brisban','mumbai')
+
+--Selecting the agent details of commission < 1
+SELECT * FROM agent_com WHERE commission < 1
+
+--Creating the table with different sizes in datatypes
+CREATE TABLE agent_3
+(agent_code CHAR(6),
+agent_name CHAR(25),
+working_area CHAR(25),
+commission INT,
+UNIQUE (agent_code),UNIQUE (agent_name),
+CHECK (commission<1))
+
+--Inserting values to the table agent_3
+INSERT INTO agent_3 VALUES('A1001','Abhi','brisban',0.2)
+INSERT INTO agent_3 VALUES('A1002','Kiran','brisban',0.0)
+INSERT INTO agent_3 VALUES('A1003','gunal','bangalore',0.5)
+INSERT INTO agent_3 VALUES('A1004','akil','chennai',0.4)
+
+--Creating table with working_area is London,New york,or Mumbai
+--commission conditions applied by creating Constraint
+CREATE TABLE agent_4
+(agent_code CHAR(6) NOT NULL,
+agent_name CHAR(25) NOT NULL,
+working_area CHAR(25),
+commission DECIMAL(8,2),
+UNIQUE (agent_code,agent_name),
+CONSTRAINT commission_area CHECK
+		((commission < 0.14 AND working_area = 'London') OR
+        (commission < 0.15 AND working_area = 'Mumbai') OR
+        (commission < 0.13 AND working_area = 'New York')))
+
+----Inserting values to table agent_4
+INSERT INTO agent_4 VALUES('A1001','Abhi','London',0.10)
+INSERT INTO agent_4 VALUES('A1002','Kiran','Mumbai',0.14)
+INSERT INTO agent_4 VALUES('A1003','gunal','New York',0.12)
+
+SELECT * FROM agent_4
