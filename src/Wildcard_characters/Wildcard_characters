@@ -1,0 +1,37 @@
+--Finding if Email is having "vi"
+SELECT DISTINCT EmailAddress FROM DimEmployee WHERE EmailAddress LIKE '%vi%'
+
+--Finding englishproduct name from DimProduct table
+SELECT EnglishProductName FROM DimProduct WHERE (EnglishProductName LIKE 'b%' AND EnglishProductName LIKE '%e')
+
+--Finding 2nd character to be 'r'
+SELECT EnglishProductName FROM DimProduct WHERE EnglishProductName LIKE '_r%'
+
+/*Finding the to select FirstName, DepartmentName,
+  Title as specific columns and show who are working as
+  'Accountant' and 'Chief Financial Officer' from Title colum*/
+
+SELECT FirstName,DepartmentName,Title
+	   FROM DimEmployee WHERE
+	   Title = 'Accountant' OR
+	   Title = 'Chief Financial Officer'
+
+--First and Last name as Full name using Hot coding
+SELECT FirstName + ' ' + LastName AS Fullname FROM DimEmployee
+SELECT FirstName,LastName from DimEmployee
+
+--Minimum unit price from UnitPrice column in FactInternetSales table.
+SELECT MIN(UnitPrice) AS 'Minimum unit price' FROM FactInternetSales
+
+--Total sales amount from FactInternetSales
+SELECT SUM(SalesAmount) FROM FactInternetSales
+
+--Average tax amount from Taxamt column in FactInternetSales table.
+SELECT AVG(TaxAmt) FROM FactInternetSales
+
+--Name, Date of Birth between range
+select FirstName, BirthDate
+from DimCustomer where
+BirthDate >= '1980-01-01' AND
+BirthDate <= '1985-12-31'
+order by BirthDate

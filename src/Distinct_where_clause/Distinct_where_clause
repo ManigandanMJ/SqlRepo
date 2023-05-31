@@ -1,0 +1,41 @@
+--Creating table salesman
+CREATE TABLE salesman(Salesman_id INT IDENTITY(5001,1)PRIMARY KEY,
+Name varchar(20),
+City varchar(20),
+Commision decimal(8,5))
+
+--Inserting values to salesman table
+INSERT INTO salesman values('James Hoog','New York',0.15)
+INSERT INTO salesman values('Nail knite','Paris',0.13)
+INSERT INTO salesman values('Pit Alex','London',0.11)
+INSERT INTO salesman values('Mc Lyon','Paris',0.14)
+INSERT INTO salesman values('Paul Adam','Paris',0.13)
+INSERT INTO salesman values('Lauson Hen','San Jose',0.12)
+
+--query to display all the information from table
+SELECT * FROM salesman
+
+--To display distinct city values in table
+SELECT DISTINCT City FROM salesman
+
+--To display all the distinct rows in the table
+SELECT DISTINCT * FROM salesman
+
+--To display distinct name and city from Salesman table
+SELECT DISTINCT Name,City FROM salesman
+
+--To display all records but city  "Paris"
+SELECT * FROM salesman WHERE City = 'Paris'
+
+--City should be "Paris" and commission should be greater than 0.14
+SELECT * FROM salesman WHERE City = 'Paris' AND Commision > 0.14
+
+--Commission column should be ascending order
+SELECT * FROM salesman ORDER BY Commision ASC
+
+--To display all records except San Jose city
+SELECT * FROM salesman WHERE City != 'San Jose'
+
+
+
+

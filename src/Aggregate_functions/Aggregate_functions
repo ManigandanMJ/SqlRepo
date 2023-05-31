@@ -1,0 +1,46 @@
+--Create table persons
+CREATE TABLE Persons(Personid INT PRIMARY KEY,
+					 Last_name VARCHAR(23),
+					 First_name VARCHAR(23),
+					 Age int)
+
+--Inserting values to Persons table
+INSERT INTO Persons VALUES(2001,'kannan','Vinodh',25)
+INSERT INTO Persons VALUES(2002,'kumar','Kiran',28)
+INSERT INTO Persons VALUES(2003,'anand','Jeeva',27)
+INSERT INTO Persons VALUES(2004,'Kumar','Dhuruvan',15)
+INSERT INTO Persons VALUES(2005,'Kumar','Dhakshan',15)
+
+--Creating table Orders
+CREATE TABLE Orders(
+					Order_id int PRIMARY KEY,
+					Order_number INT,
+					Personid INT FOREIGN KEY REFERENCES Persons)
+
+--Inserting values to persons
+INSERT INTO Orders VALUES(3001,1101,2001)
+INSERT INTO Orders VALUES(3002,1102,2002)
+INSERT INTO Orders VALUES(3003,1003,2003)
+INSERT INTO Orders VALUES(3004,1004,2004)
+INSERT INTO Orders VALUES(3005,1005,2005)
+
+--Database Restored from AdventureworksDW2019
+
+--Select DimCustomer table
+SELECT * FROM DimCustomer
+
+/*sort the LastName as ascending order and show
+that LastName column as first column from DimCustomer table */
+SELECT LastName as "First Name" from DimCustomer order by LastName ASC
+
+--To show top 20 Products from DimProduct Table
+SELECT TOP 20 * FROM DimProduct
+
+--50 percentage of customers from DimCustomers table
+SELECT TOP 50 percent * FROM DimCustomer
+
+--Minimum and Maximum yearly income from DimCustomer Table
+SELECT MIN(YearlyIncome) AS "MINIMUM ",
+	   MAX(YearlyIncome) AS "MAXIMUM"
+	   FROM DimCustomer
+
