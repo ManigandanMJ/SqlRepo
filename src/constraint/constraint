@@ -128,8 +128,8 @@ commission DECIMAL(8,2),
 UNIQUE (agent_code,agent_name),
 CONSTRAINT commission_area CHECK
 		((commission < 0.14 AND working_area = 'London') OR
-        (commission < 0.15 AND working_area = 'Mumbai') OR
-        (commission < 0.13 AND working_area = 'New York')))
+     	        (commission < 0.15 AND working_area = 'Mumbai') OR
+                (commission < 0.13 AND working_area = 'New York')))
 
 ----Inserting values to table agent_4
 INSERT INTO agent_4 VALUES('A1001','Abhi','London',0.10)
