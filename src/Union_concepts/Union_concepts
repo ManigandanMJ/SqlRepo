@@ -1,0 +1,65 @@
+--Creating table Employee
+CREATE TABLE Employee(EmployeeID INT IDENTITY (1001,1),
+					  Ename VARCHAR(10),
+					  DeptID INT,
+					  Salary INT)
+
+SELECT * FROM Employee
+
+INSERT INTO Employee VALUES('John',2,4000)
+INSERT INTO Employee VALUES('Anna',1,3500)
+INSERT INTO Employee VALUES('James',1,2500)
+INSERT INTO Employee VALUES('David',2,5000)
+INSERT INTO Employee VALUES('Mark',2,3000)
+INSERT INTO Employee VALUES('Steve',3,4500)
+INSERT INTO Employee VALUES('Alice',3,3500)
+
+--To group the DeptID column and Salary need to average
+SELECT DeptID,AVG(Salary) AS "Avg.Salary" FROM Employee
+GROUP BY DeptID
+
+--Having condition on Average Salary > 3000
+SELECT DeptID,AVG(Salary) AS "Avg.Salary" FROM Employee
+GROUP BY DeptID HAVING AVG(Salary)>3000
+
+--Create Dept table
+CREATE TABLE Department(
+	   DeptID INT,
+	   Dname VARCHAR(10),
+	   Dlocation VARCHAR(10))
+
+
+--INSERTING VALUES TO TABLE
+INSERT INTO Department VALUES(1,'HR','Mumbai')
+INSERT INTO Department VALUES(2,'IT','New Delhi')
+INSERT INTO Department VALUES(3,'Finance','Mumbai')
+
+SELECT * FROM Department
+
+--Join on Employee and Department tables using the common column DeptID
+SELECT Employee.EmployeeID,Employee.Ename,Employee.Salary,
+       Department.DeptID,Department.Dname,Department.Dlocation
+	   FROM Department JOIN Employee
+	   ON  Department.DeptID = Employee.DeptID
+
+--Dname, Avg. salary of Each dept. using Joins and Group by Clauses
+SELECT Department.Dname,AVG(Employee.Salary) AS "Avg.salary"
+	   FROM Department JOIN Employee ON Department.DeptID = Employee.DeptID
+	   GROUP BY Department.Dname
+
+--UNION AND UNION ALL
+
+--Union with 2 tables
+SELECT FirstName,BirthDate FROM DimCustomer
+	   WHERE BirthDate BETWEEN '1985-01-01' AND '1985-12-01'
+	   UNION
+SELECT FirstName,BirthDate FROM DimEmployee
+	   Where BirthDate BETWEEN '1985-01-01' AND '1985-12-01'
+
+--Union all with 2 tables
+SELECT FirstName,BirthDate FROM DimCustomer
+	   WHERE BirthDate BETWEEN '1985-01-01' AND '1985-12-01'
+	   UNION ALL
+SELECT FirstName,BirthDate FROM DimEmployee
+	   Where BirthDate BETWEEN '1985-01-01' AND '1985-12-01'
+
