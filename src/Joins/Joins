@@ -1,0 +1,60 @@
+--Creating table Employee_details
+CREATE TABLE Employee_details(
+			 EmployeeID INT IDENTITY (1,1) PRIMARY KEY,
+			 FirstName VARCHAR(20),
+			 LastName VARCHAR(20),
+			 Salary DECIMAL(10,2),
+			 Department VARCHAR(20),
+			 Gender VARCHAR(20))
+
+--Inserting Values to Employee table
+INSERT INTO Employee_details VALUES('Vikas','Ahlawat',600000.00,'IT','Male')
+INSERT INTO Employee_details VALUES('Nikita','Jain',530000.00,'HR','Female')
+INSERT INTO Employee_details VALUES('Ashish','Kumar',1000000.00,'IT','Male')
+INSERT INTO Employee_details VALUES('Nikhil','Sharma',480000.00,'HR','Male')
+INSERT INTO Employee_details VALUES('Anish','Kadian',500000.00,'Payroll','Male')
+
+SELECT * FROM Employee_details
+
+--Creating a table Project_details
+CREATE TABLE Project_details(
+			 ProjectDetailID INT IDENTITY (1,1),
+			 EmployeeID INT FOREIGN KEY REFERENCES Employee_details,
+			 ProjectName VARCHAR(20))
+
+
+
+INSERT INTO Project_details VALUES(1,'Task Track')
+INSERT INTO Project_details VALUES(1,'CLP')
+INSERT INTO Project_details VALUES(1,'Survey Management')
+INSERT INTO Project_details VALUES(2,'HR Management')
+INSERT INTO Project_details VALUES(3,'Task Track')
+INSERT INTO Project_details VALUES(3,'GRS')
+INSERT INTO Project_details VALUES(3,'DDS')
+INSERT INTO Project_details VALUES(4,'HR Management')
+INSERT INTO Project_details VALUES(6,'GL Management')
+
+SELECT * FROM Project_details
+
+--Employee which have assigned project already.
+SELECT Employee_details.FirstName,Project_details.EmployeeID,
+       Project_details.ProjectDetailID,Project_details.ProjectName
+	   FROM Project_details INNER JOIN Employee_details
+	   ON Project_details.EmployeeID = Employee_details.EmployeeID ORDER BY FirstName
+
+
+--Employee even they have not assigned project
+SELECT Employee_details.FirstName,Project_details.ProjectDetailID,
+       Project_details.EmployeeID,Project_details.ProjectName
+	   FROM Employee_details LEFT JOIN Project_details
+	   ON Project_details.EmployeeID = Employee_details.EmployeeID ORDER BY FirstName
+
+--Project name even they have not matching any employeeid
+SELECT Project_details.ProjectName
+	   FROM Employee_details RIGHT OUTER JOIN Project_details
+	   ON Project_details.EmployeeID = Employee_details.EmployeeID ORDER BY FirstName
+
+--Complete record(employeename, project name) from both tables([EmployeeDetail],[ProjectDetail])
+SELECT Employee_details.FirstName,Project_details.ProjectDetailID FROM
+	   Employee_details FULL OUTER JOIN Project_details ON
+	   Project_details.EmployeeID = Employee_details.EmployeeID
