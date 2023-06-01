@@ -100,6 +100,7 @@
 **Q8 (Join Groupby)**
 
 **Question 1**
+
 	•	Created table EmployeeDetails EmployeeID, FirstName, Salary, LastName, JoiningDate, Department, Gender.
 	•	FirstName in upper case as "First Name". 
 	•	Combine FirstName and LastName and display it as "Name".
