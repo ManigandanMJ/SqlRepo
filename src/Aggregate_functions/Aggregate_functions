@@ -1,8 +1,8 @@
 --Create table persons
 CREATE TABLE Persons(Personid INT PRIMARY KEY,
-					 Last_name VARCHAR(23),
-					 First_name VARCHAR(23),
-					 Age int)
+		     Last_name VARCHAR(23),
+          	     First_name VARCHAR(23),
+		     Age int)
 
 --Inserting values to Persons table
 INSERT INTO Persons VALUES(2001,'kannan','Vinodh',25)
@@ -13,9 +13,9 @@ INSERT INTO Persons VALUES(2005,'Kumar','Dhakshan',15)
 
 --Creating table Orders
 CREATE TABLE Orders(
-					Order_id int PRIMARY KEY,
-					Order_number INT,
-					Personid INT FOREIGN KEY REFERENCES Persons)
+		Order_id int PRIMARY KEY,
+		Order_number INT,
+		Personid INT FOREIGN KEY REFERENCES Persons)
 
 --Inserting values to persons
 INSERT INTO Orders VALUES(3001,1101,2001)
